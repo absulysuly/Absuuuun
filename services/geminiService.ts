@@ -1,4 +1,4 @@
-// Find the line that says:
+// Find:
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 // Replace with:
