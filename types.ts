@@ -23,15 +23,39 @@ export interface Category {
 }
 
 export interface Business {
-  id: number;
+  id: string;
+  nameEn: string;
+  nameAr: string;
+  nameKu: string;
   name: string;
   category: string;
+  city: string;
   imageUrl: string;
   governorate: string;
+  address: string;
+  phone: string;
+  descriptionEn: string;
+  descriptionAr: string;
+  descriptionKu: string;
+  reviewCount: number;
   isAccessible?: boolean;
+  isVerified: boolean;
+  openingHours: string;
   rating: number;
   priceRange: 'low' | 'mid' | 'high';
   amenities: string[];
+  tags: string[];
+}
+
+export interface Review {
+  id: string;
+  businessId: string;
+  reviewerName: string;
+  rating: number;
+  comment: string;
+  commentAr: string;
+  commentKu: string;
+  date: string;
 }
 
 export interface Event {

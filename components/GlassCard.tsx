@@ -3,6 +3,7 @@ import React, { ComponentType } from 'react';
 import { MapPin } from './IconComponents';
 
 interface GlassCardProps {
+  onClick?: () => void;
   imageUrl: string;
   title: string;
   subtitle: string;
@@ -14,7 +15,7 @@ interface GlassCardProps {
   };
 }
 
-const GlassCard: React.FC<GlassCardProps> = ({ imageUrl, title, subtitle, category, badge }) => {
+const GlassCard: React.FC<GlassCardProps> = ({ imageUrl, title, subtitle, category, badge, onClick }) => {
   const badgeColorClasses = {
     purple: 'bg-[#6C2BD9]/20 text-[#a37cf0]',
     pink: 'bg-[#FF2E97]/20 text-[#FF2E97]',
@@ -22,7 +23,9 @@ const GlassCard: React.FC<GlassCardProps> = ({ imageUrl, title, subtitle, catego
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden group transition-all duration-500 hover:bg-white/15 hover:border-white/30 transform hover:-translate-y-1.5 shadow-xl hover:shadow-[#6C2BD9]/30 h-full flex flex-col">
+    <div
+      onClick={onClick}
+      className={`relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden group transform hover:-translate-y-1.5 shadow-xl h-full flex flex-col ${onClick ? 'cursor-pointer hover:shadow-xl transition-shadow duration-200 hover:bg-white/15 hover:border-white/30' : 'transition-all duration-500 hover:bg-white/15 hover:border-white/30 hover:shadow-[#6C2BD9]/30'}`}>
       <div className="relative overflow-hidden h-40">
         <img 
           src={imageUrl} 

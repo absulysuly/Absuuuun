@@ -1,4 +1,4 @@
-import type { Language, Story, Business, Category, TranslationSet, Deal } from './types';
+import type { Language, Story, Business, Category, TranslationSet, Deal, Review } from './types';
 import { UtensilsCrossed, ShoppingBag, Sprout, Ticket, BedDouble, Landmark, Briefcase, Car, Building } from './components/IconComponents';
 
 export const LANGUAGES: { code: Language; name: string }[] = [
@@ -244,18 +244,146 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const MOCK_BUSINESSES: Business[] = [
-  { id: 1, name: "Baghdad Mall", category: "shopping", imageUrl: "https://picsum.photos/seed/b1/400/300", governorate: "Baghdad", isAccessible: true, rating: 4.5, priceRange: 'mid', amenities: ['Free Wi-Fi', 'Parking', 'Food Court'] },
-  { id: 2, name: "Shanidar Park", category: "tourism", imageUrl: "https://picsum.photos/seed/b2/400/300", governorate: "Erbil", isAccessible: false, rating: 4.8, priceRange: 'low', amenities: ['Gardens', 'Playground'] },
-  { id: 3, name: "Times Square Basra", category: "events", imageUrl: "https://picsum.photos/seed/b3/400/300", governorate: "Basra", isAccessible: true, rating: 4.2, priceRange: 'mid', amenities: ['Cinema', 'Restaurants', 'Shops'] },
-  { id: 4, name: "Family Mall", category: "shopping", imageUrl: "https://picsum.photos/seed/b4/400/300", governorate: "Slemani", isAccessible: true, rating: 4.6, priceRange: 'mid', amenities: ['Supermarket', 'Fashion', 'Cafe'] },
-  { id: 5, name: "Divan Erbil", category: "hotels", imageUrl: "https://picsum.photos/seed/b5/400/300", governorate: "Erbil", isAccessible: true, rating: 5.0, priceRange: 'high', amenities: ['Pool', 'Spa', 'Gym', 'Fine Dining'] },
-  { id: 6, name: "The Station", category: "business", imageUrl: "https://picsum.photos/seed/b6/400/300", governorate: "Baghdad", isAccessible: false, rating: 4.9, priceRange: 'mid', amenities: ['High-speed Wi-Fi', 'Meeting Rooms'] },
-  { id: 7, name: "Khan Murjan", category: "food", imageUrl: "https://picsum.photos/seed/b7/400/300", governorate: "Baghdad", isAccessible: false, rating: 4.7, priceRange: 'high', amenities: ['Traditional Iraqi Cuisine', 'Historic Building'] },
-  { id: 8, name: "Gali Ali Bag Waterfall", category: "tourism", imageUrl: "https://picsum.photos/seed/b8/400/300", governorate: "Erbil", isAccessible: false, rating: 4.8, priceRange: 'low', amenities: ['Nature', 'Scenery', 'Restaurants'] },
-  { id: 9, name: "Amna Suraka Museum", category: "tourism", imageUrl: "https://picsum.photos/seed/b9/400/300", governorate: "Slemani", isAccessible: true, rating: 4.5, priceRange: 'low', amenities: ['Historic Site', 'Exhibits'] },
-  { id: 10, name: "Duhok Mall", category: "shopping", imageUrl: "https://picsum.photos/seed/b10/400/300", governorate: "Duhok", isAccessible: true, rating: 4.3, priceRange: 'mid', amenities: ['Parking', 'Food Court'] },
-  { id: 11, name: "Majidi Land", category: "events", imageUrl: "https://picsum.photos/seed/b11/400/300", governorate: "Erbil", isAccessible: false, rating: 4.1, priceRange: 'mid', amenities: ['Amusement Park', 'Rides'] },
-  { id: 12, name: "Basra International Hotel", category: "hotels", imageUrl: "https://picsum.photos/seed/b12/400/300", governorate: "Basra", isAccessible: true, rating: 4.6, priceRange: 'high', amenities: ['Pool', 'Gym', 'Conference Rooms'] },
+  {
+    id: 'jiyan-restaurant-suli',
+    nameEn: 'Jiyan Restaurant',
+    nameAr: 'مطعم جيان',
+    nameKu: 'چێشتخانەی ژیان',
+    name: 'Jiyan Restaurant',
+    category: 'food',
+    city: 'Sulaymaniyah',
+    governorate: 'Slemani',
+    address: 'Salim Street, Sulaymaniyah, Iraq',
+    phone: '+9647701112233',
+    descriptionEn: 'A popular family-friendly Iraqi restaurant serving grilled specialties and Kurdish dishes.',
+    descriptionAr: 'مطعم عراقي شهير مناسب للعائلات يقدم المشويات والأطباق الكردية.',
+    descriptionKu: 'چێشتخانەیەکی ناودار و گونجاو بۆ خێزان کە خواردنی کوردی و مشەوی پێشکەش دەکات.',
+    rating: 4.6,
+    reviewCount: 183,
+    imageUrl: 'https://picsum.photos/seed/jiyan-restaurant-suli/400/300',
+    isVerified: true,
+    openingHours: '10:00 AM - 11:30 PM',
+    tags: ['grill', 'family', 'kurdish'],
+    isAccessible: true,
+    priceRange: 'mid',
+    amenities: ['Parking', 'Family Seating', 'Takeaway'],
+  },
+  {
+    id: 'rotana-hotel-erbil',
+    nameEn: 'Rotana Hotel Erbil',
+    nameAr: 'فندق روتانا أربيل',
+    nameKu: 'هوتێلی ڕۆتانا هەولێر',
+    name: 'Rotana Hotel Erbil',
+    category: 'hotels',
+    city: 'Erbil',
+    governorate: 'Erbil',
+    address: 'Gulan Street, Erbil, Iraq',
+    phone: '+9647505558899',
+    descriptionEn: 'Luxury hotel with business facilities, rooftop dining, and city views in central Erbil.',
+    descriptionAr: 'فندق فاخر يوفر مرافق أعمال ومطاعم بإطلالة على المدينة في قلب أربيل.',
+    descriptionKu: 'هوتێلێکی لوکس لە ناوەندی هەولێر لەگەڵ خزمەتگوزاری بازرگانی و دیدی شار.',
+    rating: 4.8,
+    reviewCount: 241,
+    imageUrl: 'https://picsum.photos/seed/rotana-hotel-erbil/400/300',
+    isVerified: true,
+    openingHours: '24 Hours',
+    tags: ['luxury', 'business', 'rooftop'],
+    isAccessible: true,
+    priceRange: 'high',
+    amenities: ['Pool', 'Spa', 'Conference Rooms'],
+  },
+  {
+    id: 'al-mansour-mall-baghdad',
+    nameEn: 'Al-Mansour Mall',
+    nameAr: 'مول المنصور',
+    nameKu: 'مەڵبەندی مەنسور',
+    name: 'Al-Mansour Mall',
+    category: 'shopping',
+    city: 'Baghdad',
+    governorate: 'Baghdad',
+    address: 'Mansour District, Baghdad, Iraq',
+    phone: '+9647803311224',
+    descriptionEn: 'Major shopping destination with fashion stores, cinema, and family entertainment.',
+    descriptionAr: 'وجهة تسوق رئيسية تضم متاجر أزياء وسينما وترفيه عائلي.',
+    descriptionKu: 'شوێنێکی گەورەی کڕین کە فرۆشگا، سینەما و خۆشی خێزانی تێدایە.',
+    rating: 4.4,
+    reviewCount: 329,
+    imageUrl: 'https://picsum.photos/seed/al-mansour-mall-baghdad/400/300',
+    isVerified: true,
+    openingHours: '9:00 AM - 11:00 PM',
+    tags: ['mall', 'cinema', 'family'],
+    isAccessible: true,
+    priceRange: 'mid',
+    amenities: ['Food Court', 'Parking', 'ATM'],
+  },
+  {
+    id: 'basra-sports-club',
+    nameEn: 'Basra Sports Club',
+    nameAr: 'نادي البصرة الرياضي',
+    nameKu: 'یانی وەرزشی بەسرە',
+    name: 'Basra Sports Club',
+    category: 'events', city: 'Basra', governorate: 'Basra', address: 'Corniche Road, Basra, Iraq', phone: '+9647719988776', descriptionEn: 'Indoor and outdoor events venue with tournaments and live entertainment.', descriptionAr: 'موقع فعاليات داخلية وخارجية مع بطولات وعروض مباشرة.', descriptionKu: 'شوێنی چالاکی ناوخۆ و دەرەوە لەگەڵ پاڵەوانی و پێشانگای ڕاستەوخۆ.', rating: 4.3, reviewCount: 117, imageUrl: 'https://picsum.photos/seed/basra-sports-club/400/300', isVerified: false, openingHours: '8:00 AM - 12:00 AM', tags: ['sports', 'events'], isAccessible: true, priceRange: 'mid', amenities: ['Parking', 'Cafeteria']
+  },
+  {
+    id: 'nawroz-cafe-erbil', nameEn: 'Nawroz Cafe', nameAr: 'مقهى نوروز', nameKu: 'کافەی نەورۆز', name: 'Nawroz Cafe', category: 'food', city: 'Erbil', governorate: 'Erbil', address: 'Ankawa, Erbil, Iraq', phone: '+9647503344556', descriptionEn: 'Cozy cafe known for specialty coffee and desserts.', descriptionAr: 'مقهى مريح معروف بالقهوة المختصة والحلويات.', descriptionKu: 'کافەیەکی ئارام بە ناوبانگی قاوەی تایبەت و شیرینی.', rating: 4.5, reviewCount: 94, imageUrl: 'https://picsum.photos/seed/nawroz-cafe-erbil/400/300', isVerified: true, openingHours: '7:30 AM - 11:00 PM', tags: ['cafe', 'dessert'], isAccessible: true, priceRange: 'low', amenities: ['Wi-Fi', 'Outdoor Seating']
+  },
+  {
+    id: 'dar-al-shifa-baghdad', nameEn: 'Dar Al Shifa Hospital', nameAr: 'مستشفى دار الشفاء', nameKu: 'نەخۆشخانەی دار الشفاء', name: 'Dar Al Shifa Hospital', category: 'emergency', city: 'Baghdad', governorate: 'Baghdad', address: 'Karrada, Baghdad, Iraq', phone: '+9647812233445', descriptionEn: 'Private hospital with emergency and specialist clinics.', descriptionAr: 'مستشفى خاص مع طوارئ وعيادات تخصصية.', descriptionKu: 'نەخۆشخانەی تایبەت لەگەڵ فریاکەوتن و کلینیکی پسپۆڕی.', rating: 4.1, reviewCount: 78, imageUrl: 'https://picsum.photos/seed/dar-al-shifa-baghdad/400/300', isVerified: true, openingHours: '24 Hours', tags: ['hospital', 'emergency'], isAccessible: true, priceRange: 'mid', amenities: ['Emergency', 'Pharmacy']
+  },
+  {
+    id: 'zaytun-restaurant-erbil', nameEn: 'Zaytun Restaurant', nameAr: 'مطعم زيتون', nameKu: 'چێشتخانەی زەیتوون', name: 'Zaytun Restaurant', category: 'food', city: 'Erbil', governorate: 'Erbil', address: '100m Street, Erbil, Iraq', phone: '+9647514422110', descriptionEn: 'Modern Iraqi and Levantine dining with rooftop seating.', descriptionAr: 'مطعم عراقي وشامي حديث مع جلسات على السطح.', descriptionKu: 'خواردنگەی عێراقی و شامی نوێ لەگەڵ دانیشتن لە سەر بان.', rating: 4.7, reviewCount: 162, imageUrl: 'https://picsum.photos/seed/zaytun-restaurant-erbil/400/300', isVerified: true, openingHours: '12:00 PM - 12:00 AM', tags: ['restaurant', 'rooftop'], isAccessible: true, priceRange: 'mid', amenities: ['Valet', 'Family Hall']
+  },
+  {
+    id: 'shaab-park-baghdad', nameEn: 'Al Shaab Park', nameAr: 'حديقة الشعب', nameKu: 'سەیرانگای شەعب', name: 'Al Shaab Park', category: 'events', city: 'Baghdad', governorate: 'Baghdad', address: 'Al Kadhimiya, Baghdad, Iraq', phone: '+9647709876543', descriptionEn: 'City entertainment park with rides and seasonal events.', descriptionAr: 'حديقة ترفيهية في المدينة تضم ألعاباً وفعاليات موسمية.', descriptionKu: 'پارکێکی خۆشی لە شار کە یاری و چالاکی وەرزی تێدایە.', rating: 4.2, reviewCount: 88, imageUrl: 'https://picsum.photos/seed/shaab-park-baghdad/400/300', isVerified: false, openingHours: '4:00 PM - 12:00 AM', tags: ['park', 'entertainment'], isAccessible: false, priceRange: 'low', amenities: ['Rides', 'Food Stalls']
+  },
+  {
+    id: 'firdos-hotel-basra', nameEn: 'Firdos Hotel Basra', nameAr: 'فندق الفردوس البصرة', nameKu: 'هوتێلی فیردەوسی بەسرە', name: 'Firdos Hotel Basra', category: 'hotels', city: 'Basra', governorate: 'Basra', address: 'Ashar, Basra, Iraq', phone: '+9647819988112', descriptionEn: 'Comfortable business hotel near Basra waterfront.', descriptionAr: 'فندق أعمال مريح قريب من كورنيش البصرة.', descriptionKu: 'هوتێلێکی ئاسوودە بۆ کار لە نزیک کەناراوەی بەسرە.', rating: 4.0, reviewCount: 63, imageUrl: 'https://picsum.photos/seed/firdos-hotel-basra/400/300', isVerified: true, openingHours: '24 Hours', tags: ['business hotel'], isAccessible: true, priceRange: 'mid', amenities: ['Breakfast', 'Wi-Fi']
+  },
+  {
+    id: 'sarchnar-cafe-suli', nameEn: 'Sarchnar Cafe', nameAr: 'مقهى سرجنار', nameKu: 'کافەی سەرچنار', name: 'Sarchnar Cafe', category: 'food', city: 'Sulaymaniyah', governorate: 'Slemani', address: 'Sarchnar District, Sulaymaniyah, Iraq', phone: '+9647706655443', descriptionEn: 'Hilltop cafe with scenic city views and tea service.', descriptionAr: 'مقهى على التل بإطلالة جميلة وخدمة شاي مميزة.', descriptionKu: 'کافەیەک لەسەر شاخ بە دیمەنی جوان و چای تایبەت.', rating: 4.4, reviewCount: 102, imageUrl: 'https://picsum.photos/seed/sarchnar-cafe-suli/400/300', isVerified: false, openingHours: '9:00 AM - 11:00 PM', tags: ['tea', 'view'], isAccessible: false, priceRange: 'low', amenities: ['Outdoor Seating']
+  },
+  {
+    id: 'majidi-mall-erbil', nameEn: 'Majidi Mall', nameAr: 'مجيدي مول', nameKu: 'مەجیدی مەڵ', name: 'Majidi Mall', category: 'shopping', city: 'Erbil', governorate: 'Erbil', address: 'Kirkuk Road, Erbil, Iraq', phone: '+9647502211334', descriptionEn: 'Large mall with fashion brands and cinema complex.', descriptionAr: 'مول كبير يضم علامات تجارية للموضة ومجمع سينما.', descriptionKu: 'مەڵێکی گەورە لەگەڵ براندی جل و کۆمپڵێکسی سینەما.', rating: 4.5, reviewCount: 274, imageUrl: 'https://picsum.photos/seed/majidi-mall-erbil/400/300', isVerified: true, openingHours: '10:00 AM - 12:00 AM', tags: ['shopping', 'cinema'], isAccessible: true, priceRange: 'mid', amenities: ['Kids Zone', 'Food Court']
+  },
+  {
+    id: 'al-faw-restaurant-basra', nameEn: 'Al Faw Seafood House', nameAr: 'مطعم الفاو للمأكولات البحرية', nameKu: 'چێشتخانەی ئاوی ئەلفاو', name: 'Al Faw Seafood House', category: 'food', city: 'Basra', governorate: 'Basra', address: 'Al Maqal, Basra, Iraq', phone: '+9647817755332', descriptionEn: 'Fresh Gulf seafood restaurant on the Basra riverfront.', descriptionAr: 'مطعم مأكولات بحرية طازجة على ضفاف نهر البصرة.', descriptionKu: 'خواردنگەی مەسی تازە لەسەر کەناراوەی ڕووباری بەسرە.', rating: 4.6, reviewCount: 148, imageUrl: 'https://picsum.photos/seed/al-faw-restaurant-basra/400/300', isVerified: true, openingHours: '1:00 PM - 12:30 AM', tags: ['seafood'], isAccessible: true, priceRange: 'mid', amenities: ['Family Room', 'Valet']
+  },
+  {
+    id: 'zakho-plaza-duhok', nameEn: 'Zakho Plaza', nameAr: 'زاخو بلازا', nameKu: 'زاخۆ پلازا', name: 'Zakho Plaza', category: 'shopping', city: 'Duhok', governorate: 'Duhok', address: 'City Center, Duhok, Iraq', phone: '+9647508899112', descriptionEn: 'Regional shopping and dining center in Duhok.', descriptionAr: 'مركز تسوق ومطاعم إقليمي في دهوك.', descriptionKu: 'ناوەندێکی کڕین و خواردنەوەی ناوچەیی لە دهۆک.', rating: 4.1, reviewCount: 59, imageUrl: 'https://picsum.photos/seed/zakho-plaza-duhok/400/300', isVerified: false, openingHours: '10:00 AM - 10:30 PM', tags: ['shopping'], isAccessible: true, priceRange: 'mid', amenities: ['Parking']
+  },
+  {
+    id: 'slemani-grand-hotel', nameEn: 'Slemani Grand Hotel', nameAr: 'فندق السليمانية جراند', nameKu: 'هوتێلی گڕاندی سلێمانی', name: 'Slemani Grand Hotel', category: 'hotels', city: 'Sulaymaniyah', governorate: 'Slemani', address: 'Bakhtiary, Sulaymaniyah, Iraq', phone: '+9647702299445', descriptionEn: 'Modern hotel with meeting rooms and spa center.', descriptionAr: 'فندق حديث مع قاعات اجتماعات ومركز سبا.', descriptionKu: 'هوتێلێکی نوێ لەگەڵ ژووری کۆبوونەوە و سپا.', rating: 4.3, reviewCount: 112, imageUrl: 'https://picsum.photos/seed/slemani-grand-hotel/400/300', isVerified: true, openingHours: '24 Hours', tags: ['hotel', 'spa'], isAccessible: true, priceRange: 'high', amenities: ['Spa', 'Gym', 'Airport Pickup']
+  },
+  {
+    id: 'baghdad-gate-festival', nameEn: 'Baghdad Gate Arena', nameAr: 'ساحة بوابة بغداد', nameKu: 'مەیدانی دەرگای بەغدا', name: 'Baghdad Gate Arena', category: 'events', city: 'Baghdad', governorate: 'Baghdad', address: 'Airport Road, Baghdad, Iraq', phone: '+9647810022334', descriptionEn: 'Large arena for concerts, family shows, and exhibitions.', descriptionAr: 'ساحة كبيرة للحفلات والعروض العائلية والمعارض.', descriptionKu: 'هۆڵێکی گەورە بۆ کنسێرت و پێشانگاکان.', rating: 4.2, reviewCount: 136, imageUrl: 'https://picsum.photos/seed/baghdad-gate-festival/400/300', isVerified: true, openingHours: '2:00 PM - 11:00 PM', tags: ['concerts', 'festival'], isAccessible: true, priceRange: 'mid', amenities: ['Parking', 'Security']
+  },
+  {
+    id: 'hawler-medical-center', nameEn: 'Hawler Medical Center', nameAr: 'مركز هولير الطبي', nameKu: 'ناوەندی پزیشکی هەولێر', name: 'Hawler Medical Center', category: 'emergency', city: 'Erbil', governorate: 'Erbil', address: 'Naz City, Erbil, Iraq', phone: '+9647500055667', descriptionEn: 'Comprehensive care center with diagnostics and emergency care.', descriptionAr: 'مركز رعاية شامل مع تشخيص وخدمات طوارئ.', descriptionKu: 'ناوەندی چارەسەری گشتی لەگەڵ تاقیکردنەوە و فریاکەوتن.', rating: 4.0, reviewCount: 71, imageUrl: 'https://picsum.photos/seed/hawler-medical-center/400/300', isVerified: true, openingHours: '24 Hours', tags: ['health', 'clinic'], isAccessible: true, priceRange: 'mid', amenities: ['Emergency', 'Lab']
+  },
+  {
+    id: 'shatt-al-arab-cafe', nameEn: 'Shatt Al Arab Cafe', nameAr: 'مقهى شط العرب', nameKu: 'کافەی شەط العرب', name: 'Shatt Al Arab Cafe', category: 'food', city: 'Basra', governorate: 'Basra', address: 'Shatt Al Arab Corniche, Basra, Iraq', phone: '+9647711100223', descriptionEn: 'Riverside cafe with hookah, tea, and live oud nights.', descriptionAr: 'مقهى نهري يقدم الأركيلة والشاي وأمسيات العود.', descriptionKu: 'کافەی کەناراوەی ڕووبار بە چای و شیشە و شەوی عود.', rating: 4.2, reviewCount: 87, imageUrl: 'https://picsum.photos/seed/shatt-al-arab-cafe/400/300', isVerified: false, openingHours: '5:00 PM - 1:00 AM', tags: ['cafe', 'nightlife'], isAccessible: false, priceRange: 'low', amenities: ['Outdoor Seating', 'Live Music']
+  },
+  {
+    id: 'qalat-citadel-tour', nameEn: 'Erbil Citadel Experience', nameAr: 'تجربة قلعة أربيل', nameKu: 'ئەزموونی قەڵای هەولێر', name: 'Erbil Citadel Experience', category: 'events', city: 'Erbil', governorate: 'Erbil', address: 'Erbil Citadel, Erbil, Iraq', phone: '+9647507773322', descriptionEn: 'Cultural entertainment tours and nightly heritage performances.', descriptionAr: 'جولات ثقافية وعروض تراثية ليلية في القلعة.', descriptionKu: 'گەشتی کەلتووری و پێشانگای میراتی شەوانی لە قەڵا.', rating: 4.7, reviewCount: 155, imageUrl: 'https://picsum.photos/seed/qalat-citadel-tour/400/300', isVerified: true, openingHours: '4:00 PM - 10:00 PM', tags: ['heritage', 'tour'], isAccessible: true, priceRange: 'mid', amenities: ['Guides', 'Gift Shop']
+  },
+  {
+    id: 'suli-city-center', nameEn: 'Suli City Center', nameAr: 'سنتر مدينة السليمانية', nameKu: 'ناوەندی شاری سلێمانی', name: 'Suli City Center', category: 'shopping', city: 'Sulaymaniyah', governorate: 'Slemani', address: 'Goizha Road, Sulaymaniyah, Iraq', phone: '+9647704433221', descriptionEn: 'Urban shopping destination with local and international brands.', descriptionAr: 'وجهة تسوق حضرية تضم علامات محلية وعالمية.', descriptionKu: 'شوێنی کڕینی ناو شار بە براندی خۆجێیی و جیهانی.', rating: 4.3, reviewCount: 119, imageUrl: 'https://picsum.photos/seed/suli-city-center/400/300', isVerified: true, openingHours: '9:30 AM - 11:30 PM', tags: ['brands', 'shopping'], isAccessible: true, priceRange: 'mid', amenities: ['Parking', 'Family Zone']
+  },
+  {
+    id: 'basra-waterfront-hotel', nameEn: 'Basra Waterfront Hotel', nameAr: 'فندق واجهة البصرة', nameKu: 'هوتێلی کەناراوەی بەسرە', name: 'Basra Waterfront Hotel', category: 'hotels', city: 'Basra', governorate: 'Basra', address: 'Al Ashar Corniche, Basra, Iraq', phone: '+9647806655112', descriptionEn: 'Premium waterfront stay with business lounges and fine dining.', descriptionAr: 'إقامة فاخرة على الواجهة المائية مع صالات أعمال ومطعم راقٍ.', descriptionKu: 'مانەوەیەکی لوکس لە کەناراوە بە هۆڵی کار و خواردنی جوان.', rating: 4.5, reviewCount: 97, imageUrl: 'https://picsum.photos/seed/basra-waterfront-hotel/400/300', isVerified: true, openingHours: '24 Hours', tags: ['waterfront', 'luxury'], isAccessible: true, priceRange: 'high', amenities: ['Gym', 'Lounge', 'Airport Pickup']
+  }
+];
+
+export const MOCK_REVIEWS: Review[] = [
+  { id: 'r1', businessId: 'jiyan-restaurant-suli', reviewerName: 'Sara N.', rating: 5, comment: 'Excellent kebab and very friendly service.', commentAr: 'كباب ممتاز وخدمة ودودة جداً.', commentKu: 'کەبابێکی زۆر باش و خزمەتگوزاری دۆستانە.', date: '2024-11-01' },
+  { id: 'r2', businessId: 'jiyan-restaurant-suli', reviewerName: 'Ahmed K.', rating: 4, comment: 'Great family seating area and fair prices.', commentAr: 'جلسة عائلية رائعة وأسعار مناسبة.', commentKu: 'شوێنی دانیشتنی خێزانی زۆر باش و نرخ گونجاو.', date: '2024-11-12' },
+  { id: 'r3', businessId: 'jiyan-restaurant-suli', reviewerName: 'Dilan M.', rating: 5, comment: 'Authentic Kurdish taste and quick service.', commentAr: 'طعم كردي أصيل وخدمة سريعة.', commentKu: 'تامی ڕەسەنی کوردی و خزمەتگوزاری خێرا.', date: '2024-12-02' },
+  { id: 'r4', businessId: 'rotana-hotel-erbil', reviewerName: 'Maya R.', rating: 5, comment: 'Beautiful room and great breakfast.', commentAr: 'غرفة جميلة وفطور رائع.', commentKu: 'ژوورێکی جوان و نانی بەیانی زۆر باش.', date: '2024-11-09' },
+  { id: 'r5', businessId: 'rotana-hotel-erbil', reviewerName: 'Omar T.', rating: 4, comment: 'Professional staff and smooth check-in.', commentAr: 'طاقم محترف وتسجيل دخول سلس.', commentKu: 'ستافی پیشەیی و چوونەژوورەوەی ئاسان.', date: '2024-11-18' },
+  { id: 'r6', businessId: 'rotana-hotel-erbil', reviewerName: 'Ranj A.', rating: 5, comment: 'Perfect business stay in Erbil.', commentAr: 'إقامة مثالية للأعمال في أربيل.', commentKu: 'مانەوەیەکی تەواو بۆ کار لە هەولێر.', date: '2024-12-05' },
+  { id: 'r7', businessId: 'al-mansour-mall-baghdad', reviewerName: 'Zainab H.', rating: 4, comment: 'Many stores and clean facilities.', commentAr: 'متاجر كثيرة ومرافق نظيفة.', commentKu: 'فرۆشگای زۆر و شوێنی پاک.', date: '2024-11-04' },
+  { id: 'r8', businessId: 'al-mansour-mall-baghdad', reviewerName: 'Ali S.', rating: 5, comment: 'Cinema experience was excellent.', commentAr: 'تجربة السينما كانت ممتازة.', commentKu: 'ئەزموونی سینەما زۆر باش بوو.', date: '2024-11-20' },
+  { id: 'r9', businessId: 'al-mansour-mall-baghdad', reviewerName: 'Noor F.', rating: 4, comment: 'Good place for family weekends.', commentAr: 'مكان جيد لعطلة نهاية الأسبوع العائلية.', commentKu: 'شوێنێکی باش بۆ کۆتایی هەفتەی خێزانی.', date: '2024-12-08' }
 ];
 
 const now = new Date();
