@@ -12,6 +12,7 @@ interface HeroSlideProps {
   onCategorySelect: (categoryId: string) => void;
   selectedGovernorate: string;
   onGovernorateChange: (govId: string) => void;
+  onSearch: (query: string) => void;
 }
 
 // FIX: Add type definitions for the Web Speech API to resolve "Cannot find name 'SpeechRecognition'" errors.
@@ -73,7 +74,7 @@ interface CustomWindow extends Window {
 }
 declare const window: CustomWindow;
 
-const HeroSlide: React.FC<HeroSlideProps> = ({ t, language, onCategorySelect, selectedGovernorate, onGovernorateChange }) => {
+const HeroSlide: React.FC<HeroSlideProps> = ({ t, language, onCategorySelect, selectedGovernorate, onGovernorateChange, onSearch }) => {
   const [searchValue, setSearchValue] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [speechRecognitionSupported, setSpeechRecognitionSupported] = useState(false);
@@ -107,6 +108,7 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ t, language, onCategorySelect, se
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         setSearchValue(transcript);
+        onSearch(transcript);
         setIsListening(false);
       };
       recognition.onerror = (event) => {
@@ -118,7 +120,7 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ t, language, onCategorySelect, se
       };
       recognitionRef.current = recognition;
     }
-  }, []);
+  }, [onSearch]);
   
   useEffect(() => {
     if (recognitionRef.current) {
@@ -165,7 +167,10 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ t, language, onCategorySelect, se
             placeholder={isListening ? t.hero.listening : t.hero.searchPlaceholder}
             aria-label={t.hero.searchPlaceholder}
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              onSearch(e.target.value);
+            }}
             disabled={isListening}
           />
           <div className="absolute end-3 bottom-3 flex items-center gap-3">

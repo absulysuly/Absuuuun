@@ -680,6 +680,11 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
         searchPlaceholder: "Search for a city or place...",
         planJourneyButton: "Plan Journey"
     },
+    searchResults: 'results for',
+    noResults: 'No results for',
+    tryDifferent: 'Try a different search term or browse by category',
+    browseAll: 'Browse All',
+    searchPlaceholder: 'Search businesses, venues, cities...',
     accessibilityHub: {
         title: "Accessibility Hub",
         description: "We are committed to making Iraq Compass accessible to everyone. Customize your experience below.",
@@ -977,6 +982,11 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
         searchPlaceholder: "ابحث عن مدينة أو مكان...",
         planJourneyButton: "خطط لرحلة"
     },
+    searchResults: 'نتائج لـ',
+    noResults: 'لا توجد نتائج لـ',
+    tryDifferent: 'جرب مصطلح بحث مختلف أو تصفح حسب الفئة',
+    browseAll: 'تصفح الكل',
+    searchPlaceholder: 'ابحث عن الأعمال والأماكن والمدن...',
     accessibilityHub: {
         title: "مركز الوصول",
         description: "نحن ملتزمون بجعل عراق كومباس متاحًا للجميع. خصص تجربتك أدناه.",
@@ -1274,6 +1284,11 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
         searchPlaceholder: "بۆ شارێک یان شوێنێک بگەڕێ...",
         planJourneyButton: "پلانی گەشت"
     },
+    searchResults: 'ئەنجام بۆ',
+    noResults: 'هیچ ئەنجامێک نییە بۆ',
+    tryDifferent: 'وشەیەکی تر بگەڕێ یان بگەڕێ بە پۆل',
+    browseAll: 'هەموو بگەڕێ',
+    searchPlaceholder: 'بگەڕێ بۆ کارەبازە، شوێن، شارەکان...',
     accessibilityHub: {
         title: "ناوەندی دەستپێگەیشتن",
         description: "ئێمە پابەندین بەوەی کە عراق کۆمパス بۆ هەمووان بەردەست بێت. ئەزموونی خۆت لە خوارەوە بگونجێنە.",

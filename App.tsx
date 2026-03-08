@@ -11,6 +11,7 @@ import AccessibilityHubSlide from './components/AccessibilityHubSlide';
 import BottomNav from './components/BottomNav';
 import Toast from './components/Toast';
 import DetailView from './components/views/DetailView';
+import SearchView from './components/views/SearchView';
 import { TRANSLATIONS } from './constants';
 
 const App: React.FC = () => {
@@ -19,7 +20,8 @@ const App: React.FC = () => {
   const [reduceMotion, setReduceMotion] = useState(false);
   const [selectedGovernorate, setSelectedGovernorate] = useState<string>('all');
   const [selectedBusinessId, setSelectedBusinessId] = useState<string | null>(null);
-  const [currentView, setCurrentView] = useState<'home' | 'browse' | 'detail'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'browse' | 'detail' | 'search'>('home');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const [activeFilters, setActiveFilters] = useState({
@@ -52,6 +54,13 @@ const App: React.FC = () => {
   const handleSelectBusiness = (id: string) => {
     setSelectedBusinessId(id);
     setCurrentView('detail');
+  };
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim().length > 0) {
+      setCurrentView('search');
+    }
   };
 
   useEffect(() => {
@@ -97,11 +106,19 @@ const App: React.FC = () => {
                 onCategorySelect={handleCategorySelect}
                 selectedGovernorate={selectedGovernorate}
                 onGovernorateChange={setSelectedGovernorate}
+                onSearch={handleSearch}
               />
               <FeaturedBusinessesSlide t={t} selectedGovernorate={selectedGovernorate} onSelectBusiness={handleSelectBusiness} />
               <CuratedEventsSlide t={t} />
               <DealsMarketplaceSlide t={t} selectedGovernorate={selectedGovernorate} />
-              <CityNavigatorSlide t={t} />
+              <CityNavigatorSlide
+                t={t}
+                language={language}
+                onCitySelect={(cityId) => {
+                  setSelectedGovernorate(cityId);
+                  setCurrentView('browse');
+                }}
+              />
               <AccessibilityHubSlide
                 t={t}
                 fontSize={fontSize}
@@ -122,11 +139,22 @@ const App: React.FC = () => {
             />
           )}
 
+
+          {currentView === 'search' && (
+            <SearchView
+              searchQuery={searchQuery}
+              language={language}
+              onSearchChange={handleSearch}
+              onNavigate={(view) => setCurrentView(view as 'home' | 'browse' | 'detail' | 'search')}
+              onSelectBusiness={handleSelectBusiness}
+            />
+          )}
+
           {currentView === 'detail' && selectedBusinessId && (
             <DetailView
               businessId={selectedBusinessId}
               language={language}
-              onNavigate={(view) => setCurrentView(view as 'home' | 'browse' | 'detail')}
+              onNavigate={(view) => setCurrentView(view as 'home' | 'browse' | 'detail' | 'search')}
               onSelectBusiness={handleSelectBusiness}
               showToast={showToast}
             />
@@ -138,7 +166,7 @@ const App: React.FC = () => {
         </footer>
       </div>
 
-      <BottomNav currentView={currentView} onNavigate={(view) => setCurrentView(view as 'home' | 'browse' | 'detail')} language={language} showToast={showToast} />
+      <BottomNav currentView={currentView} onNavigate={(view) => setCurrentView(view as 'home' | 'browse' | 'detail' | 'search')} language={language} showToast={showToast} />
       {toastMessage && <Toast message={toastMessage} onDismiss={() => setToastMessage(null)} />}
     </div>
   );
