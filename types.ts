@@ -172,6 +172,11 @@ export interface TranslationSet {
     searchPlaceholder: string;
     planJourneyButton: string;
   },
+  searchResults: string;
+  noResults: string;
+  tryDifferent: string;
+  browseAll: string;
+  searchPlaceholder: string;
   accessibilityHub: {
     title: string;
     description: string;
