@@ -17,10 +17,11 @@ interface BusinessDirectorySlideProps {
   t: TranslationSet;
   activeFilters: ActiveFilters;
   setActiveFilters: React.Dispatch<React.SetStateAction<ActiveFilters>>;
+  onSelectBusiness: (id: string) => void;
 }
 
-const BusinessListItem: React.FC<{ business: Business }> = ({ business }) => (
-  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-4 transition-all duration-300 hover:bg-white/10 hover:border-white/20 transform hover:-translate-y-1">
+const BusinessListItem: React.FC<{ business: Business; onSelectBusiness: (id: string) => void }> = ({ business, onSelectBusiness }) => (
+  <div onClick={() => onSelectBusiness(business.id)} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-4 transition-all duration-300 hover:bg-white/10 hover:border-white/20 transform hover:-translate-y-1 cursor-pointer hover:shadow-xl transition-shadow duration-200">
     <img src={business.imageUrl} alt={business.name} className="w-full sm:w-32 h-24 object-cover rounded-lg flex-shrink-0" />
     <div className="flex-grow text-center sm:text-left">
       <h3 className="font-bold text-lg text-white">{business.name}</h3>
@@ -40,7 +41,7 @@ const BusinessListItem: React.FC<{ business: Business }> = ({ business }) => (
   </div>
 );
 
-const BusinessDirectorySlide = forwardRef<HTMLElement, BusinessDirectorySlideProps>(({ t, activeFilters, setActiveFilters }, ref) => {
+const BusinessDirectorySlide = forwardRef<HTMLElement, BusinessDirectorySlideProps>(({ t, activeFilters, setActiveFilters, onSelectBusiness }, ref) => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
   const handleFilterChange = (key: keyof ActiveFilters, value: string) => {
@@ -159,13 +160,14 @@ const BusinessDirectorySlide = forwardRef<HTMLElement, BusinessDirectorySlidePro
                 title={business.name}
                 subtitle={business.governorate}
                 category={t.categories[business.category as keyof typeof t.categories] || business.category}
+                onClick={() => onSelectBusiness(business.id)}
               />
             ))}
           </div>
         ) : (
           <div className="flex flex-col gap-4">
             {filteredAndSortedBusinesses.map(business => (
-              <BusinessListItem key={business.id} business={business} />
+              <BusinessListItem key={business.id} business={business} onSelectBusiness={onSelectBusiness} />
             ))}
           </div>
         )

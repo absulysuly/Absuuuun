@@ -6,9 +6,10 @@ import { MOCK_BUSINESSES } from '../constants';
 interface FeaturedBusinessesSlideProps {
   t: TranslationSet;
   selectedGovernorate: string;
+  onSelectBusiness: (id: string) => void;
 }
 
-const FeaturedBusinessesSlide: React.FC<FeaturedBusinessesSlideProps> = ({ t, selectedGovernorate }) => {
+const FeaturedBusinessesSlide: React.FC<FeaturedBusinessesSlideProps> = ({ t, selectedGovernorate, onSelectBusiness }) => {
   const featured = MOCK_BUSINESSES
     .filter(business => selectedGovernorate === 'all' || business.governorate === selectedGovernorate)
     .slice(0, 8);
@@ -25,6 +26,7 @@ const FeaturedBusinessesSlide: React.FC<FeaturedBusinessesSlideProps> = ({ t, se
                 title={business.name}
                 subtitle={business.governorate}
                 category={business.category}
+                onClick={() => onSelectBusiness(business.id)}
               />
             </div>
           ))}
